@@ -1,7 +1,8 @@
 {
     "compilerOptions": {
         "target": "es2017",
-        "experimentalDecorators": true
+        "experimentalDecorators": true,
+        "allowSyntheticDefaultImports": true
     },
     "exclude": [
         "node_modules"
