@@ -3,6 +3,6 @@ import { name } from "./utils.js";
 import {getNotes} from './notes';
 import {Logger} from './logger';
 
-console.log(getNotes())
-console.log(name)
-console.log(validator.isEmail('karlsson.ivan@gmail.com'));
+Logger.log(getNotes());
+Logger.success(name);
+Logger.warrning(validator.isEmail("karlsson.ivan@gmail.com"));
