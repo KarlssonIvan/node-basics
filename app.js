@@ -1,6 +1,6 @@
 import validator from 'validator'
 import { name } from "./utils.js";
-import {getNotes} from './notes';
+import  * as notes from './notes';
 import {Logger} from './logger';
 import yargs from 'yargs'
 yargs.version("Karlsson")
@@ -21,8 +21,8 @@ yargs.command({
       type: "string"
     }
   },
-  handler: function(argv) {
-    console.log(`Title: ${argv.title} \nBody:  ${argv.body}`);
+  handler(argv) {
+    notes.addNote(argv.title, argv.body)
   }
 });
 
@@ -30,8 +30,15 @@ yargs.command({
 yargs.command({
     command: 'remove',
     describe: 'Remove a new note',
-    handler: function () {
-        console.log('Removing a note')
+    builder: {
+      title: {
+        describe: "Note title",
+        demandOption: true,
+        type: "string"
+      }
+    },
+    handler(argv) {
+      notes.removeNote(argv.title)
     }
 })
 
@@ -39,7 +46,7 @@ yargs.command({
 yargs.command({
     command: 'read',
     describe: 'Reading a new note',
-    handler: function () {
+    handler() {
         console.log('Reading a note')
     }
 })
@@ -48,7 +55,7 @@ yargs.command({
 yargs.command({
     command: 'list',
     describe: 'Displaying list of notes',
-    handler: function () {
+    handler() {
         console.log("Displaying list of notes");
     }
 })
