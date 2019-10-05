@@ -13,6 +13,6 @@ export class Logger {
     }
 
     static success (message) {
-        console.info(chalk.green(message))
+        console.info(chalk.green.inverse(message))
     }
 }

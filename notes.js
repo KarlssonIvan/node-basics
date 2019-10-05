@@ -28,6 +28,23 @@ export function removeNote(title) {
     }
 }
 
+export function listNotes() {
+    const notes = loadNotes()
+    notes.forEach(note => {
+        Logger.success(note.title)
+    })
+}
+
+export function readNote(title) {
+    const notes = loadNotes()
+    const note = notes.find((book) => book.title === title)
+    if (!note) {
+        Logger.warrning('Note title was taken')
+    } else {
+        Logger.success(`Title ${note.title} \nBody  ${note.body}`)
+    }
+}
+
 function loadNotes() {
     try {
         const dataBuffer = fs.readFileSync('notes.json')
