@@ -1,8 +1,5 @@
 import fs from 'fs'
 import {Logger} from './logger'
-export function getNotes() {
-    return "Your notes..."
-}
 
 export function addNote (title, body) {
     const notes = loadNotes()
