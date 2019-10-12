@@ -4,6 +4,8 @@ import {Logger} from './logger'
 export function addNote (title, body) {
     const notes = loadNotes()
     const duplicates = notes.filter((book) => book.title === title)
+    console.log('kuku')
+    debugger
     if (!duplicates.length) {
         notes.push({ title, body })
         saveNotes(notes)
